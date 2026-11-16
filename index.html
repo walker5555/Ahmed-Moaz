@@ -4,6 +4,7 @@ title: Ahmed Moaz
 medium_articles:
   - title: "Event Tracing for Windows (ETW): Architecture, Forensic & Detection"
     date: '2026-07-16'
+    soc: 'yes'
     url: https://medium.com/@ahmedmoaz2003/event-tracing-for-windows-etw-internals-for-defenders-architecture-forensic-artifacts-cc1cb872d32d
     description: "Windows event tracing, telemetry integrity, and forensic analysis."
   - title: "Full Forensic Volume Shadow Copies"
@@ -38,7 +39,7 @@ medium_articles:
 {% endfor %}
 {% for post in page.medium_articles %}
 <div class="post">
-<span class="topic">DFIR · Medium</span>
+<span class="topic">DFIR{% if post.soc %} · SOC{% endif %} · Medium</span>
 <h3><a href="{{ post.url | escape }}">{{ post.title | escape }}</a></h3>
 <time datetime="{{ post.date }}">{{ post.date | date: "%d %b %Y" }}</time>
 <p>{{ post.description | escape }}</p>
@@ -51,11 +52,15 @@ medium_articles:
 <section id="{{ topic }}" aria-labelledby="{{ topic }}-title">
 <h2 id="{{ topic }}-title">{{ labels[forloop.index0] }}</h2>
 {% assign posts = site.categories[topic] %}
-{% if posts.size > 0 or topic == 'dfir' %}
+{% assign medium_posts = page.medium_articles %}
+{% if topic == 'soc' %}
+{% assign medium_posts = page.medium_articles | where: 'soc', 'yes' %}
+{% endif %}
+{% if posts.size > 0 or topic == 'dfir' or topic == 'soc' %}
 <ul>
 {% for post in posts %}<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></li>{% endfor %}
-{% if topic == 'dfir' %}
-{% for post in page.medium_articles %}<li><a href="{{ post.url | escape }}">{{ post.title | escape }}</a> <span class="topic">Medium</span></li>{% endfor %}
+{% if topic == 'dfir' or topic == 'soc' %}
+{% for post in medium_posts %}<li><a href="{{ post.url | escape }}">{{ post.title | escape }}</a> <span class="topic">Medium</span></li>{% endfor %}
 {% endif %}
 </ul>
 {% else %}
