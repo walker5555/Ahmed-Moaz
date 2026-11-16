@@ -1,0 +1,34 @@
+---
+layout: field-notes
+title: Ahmed Moaz
+---
+<h1>Security Field Notes</h1>
+<p class="summary">Practical notes on investigating incidents, understanding cyber threats, and using evidence to guide decisions in a security operations center.</p>
+<div class="archive">
+<section id="recent-posts" aria-labelledby="recent-title">
+<h2 id="recent-title">Recent posts</h2>
+{% for post in site.posts limit: 8 %}
+<div class="post">
+<span class="topic">{{ post.categories | join: " · " | replace: "threat-analysis", "Threat Analysis" | replace: "dfir", "DFIR" | replace: "soc", "SOC" }}</span>
+<h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
+{% if post.description %}<p>{{ post.description | escape }}</p>{% endif %}
+</div>
+{% else %}
+<p>No posts published yet.</p>
+{% endfor %}
+</section>
+{% assign topics = 'dfir,threat-analysis,soc' | split: ',' %}
+{% assign labels = 'DFIR,Threat Analysis,SOC' | split: ',' %}
+{% for topic in topics %}
+<section id="{{ topic }}" aria-labelledby="{{ topic }}-title">
+<h2 id="{{ topic }}-title">{{ labels[forloop.index0] }}</h2>
+{% assign posts = site.categories[topic] %}
+{% if posts.size > 0 %}
+<ul>{% for post in posts %}<li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></li>{% endfor %}</ul>
+{% else %}
+<p>No posts in this topic yet.</p>
+{% endif %}
+</section>
+{% endfor %}
+</div>

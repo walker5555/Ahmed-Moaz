@@ -1,0 +1,12 @@
+title: Ahmed Moaz
+description: Digital forensics, incident response, and threat analysis from a SOC perspective.
+timezone: Africa/Cairo
+permalink: /posts/:title/
+exclude:
+  - README.md
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: field-notes
