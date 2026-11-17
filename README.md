@@ -6,6 +6,6 @@ I’ve gone deeper into digital forensics on real cases, using EDR findings to g
 
 I’m building my threat hunting skills and use threat intelligence to put forensic findings in context. I compare indicators and observed behavior with known attacker techniques and use those leads to decide which hosts, accounts, or events to check next.
 
-I share my Windows forensics write-ups on [Security Field Notes](https://walker5555.github.io/Ahmed-Moaz/).
+I share my write-ups on [Security Field Notes](https://walker5555.github.io/Ahmed-Moaz/).
 
 [LinkedIn](https://www.linkedin.com/in/ahmed-moaz11/) · [Medium](https://medium.com/@ahmedmoaz2003)
