@@ -1,4 +1,4 @@
-# Walker | Junior SOC Analyst
+# WHO AM I ??
 
 I investigate suspicious activity on Windows endpoints. I use Splunk to correlate Windows event logs and authentication activity, and I review alerts in Kaspersky EDR and SentinelOne to understand what ran and which hosts may be affected. I use Cortex XSOAR playbooks to automate routine triage and indicator enrichment.
 
