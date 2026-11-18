@@ -10,3 +10,6 @@ defaults:
       type: posts
     values:
       layout: field-notes
+
+url: https://walker5555.github.io
+baseurl: ''
