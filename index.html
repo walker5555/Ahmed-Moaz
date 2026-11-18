@@ -3,33 +3,40 @@ layout: field-notes
 title: Walker
 medium_articles:
   - title: "Event Tracing for Windows (ETW): Architecture, Forensic & Detection"
+    image: https://miro.medium.com/v2/resize:fit:1000/1*knl1d5b9U7yXdvKWot2lkQ.png
     date: '2026-07-16'
     url: https://medium.com/@ahmedmoaz2003/event-tracing-for-windows-etw-internals-for-defenders-architecture-forensic-artifacts-cc1cb872d32d
     description: "Windows event tracing, telemetry integrity, and forensic analysis."
   - title: "Full Forensic Volume Shadow Copies"
+    image: https://miro.medium.com/v2/resize:fit:1000/1*7IqtU7oSK-AlJYanBYGEqA.png
     date: '2026-02-05'
     url: https://medium.com/@ahmedmoaz2003/full-forensic-volume-shadow-copies-b3585bf84d8f
     description: "Using Windows volume snapshots as a source of forensic evidence."
   - title: "ADS Forensics"
+    image: https://miro.medium.com/v2/resize:fit:1000/0*87oOTqnGAfCfykFv.png
     date: '2025-11-26'
     url: https://medium.com/@ahmedmoaz2003/ads-forensics-eb170d020037
     description: "Investigating NTFS alternate data streams."
   - title: "GBT Forensics"
+    image: https://miro.medium.com/v2/resize:fit:1000/1*AElJtVqVFTQVTc6yuslJsw.png
     date: '2025-09-23'
     url: https://medium.com/@ahmedmoaz2003/gbt-forensics-700e3e1c3e78
     description: "A Windows forensic investigation write-up."
   - title: "Prefetch files Analysis"
+    image: https://miro.medium.com/v2/resize:fit:1000/1*r4786dLhJKeD4X9Eh-tqdg.jpeg
     date: '2024-08-12'
     url: https://medium.com/p/b971e01376ea
     description: "Using Windows Prefetch files to investigate program execution."
 ---
 <h1>Security Field Notes</h1>
 <p class="summary">Practical notes on investigating incidents, understanding cyber threats, and using evidence to guide decisions in a security operations center.</p>
+<style>.post .cover{display:block;order:-2;margin:-30px -30px 24px;overflow:hidden;border-radius:11px 11px 0 0}.post .cover img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}.post:last-child{grid-column:auto}@media(max-width:650px){.post .cover{margin:-24px -24px 20px}}</style>
 <div class="archive">
 <section id="recent-posts" aria-labelledby="recent-title">
 <h2 id="recent-title">Blog posts</h2>
 {% for post in site.posts limit: 8 %}
 <div class="post">
+{% if post.image %}<a class="cover" href="{% if post.url contains 'https://' %}{{ post.url | escape }}{% else %}{{ post.url | relative_url }}{% endif %}" aria-label="{{ post.title | escape }}"><img src="{{ post.image | escape }}" alt="" loading="lazy" decoding="async" width="1000" height="563"></a>{% endif %}
 <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
 <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
 {% if post.description %}<p>{{ post.description | escape }}</p>{% endif %}
@@ -37,6 +44,7 @@ medium_articles:
 {% endfor %}
 {% for post in page.medium_articles %}
 <div class="post">
+{% if post.image %}<a class="cover" href="{% if post.url contains 'https://' %}{{ post.url | escape }}{% else %}{{ post.url | relative_url }}{% endif %}" aria-label="{{ post.title | escape }}"><img src="{{ post.image | escape }}" alt="" loading="lazy" decoding="async" width="1000" height="563"></a>{% endif %}
 <h3><a href="{{ post.url | escape }}">{{ post.title | escape }}</a></h3>
 <time datetime="{{ post.date }}">{{ post.date | date: "%d %b %Y" }}</time>
 <p>{{ post.description | escape }}</p>
