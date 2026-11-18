@@ -30,7 +30,13 @@ medium_articles:
 ---
 <h1>Security Field Notes</h1>
 <p class="summary">Practical notes on investigating incidents, understanding cyber threats, and using evidence to guide decisions in a security operations center.</p>
-<style>.post .cover{display:block;order:-2;margin:-30px -30px 24px;overflow:hidden;border-radius:11px 11px 0 0}.post .cover img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}.post:last-child{grid-column:auto}@media(max-width:650px){.post .cover{margin:-24px -24px 20px}}</style>
+<style>
+.post .cover{position:relative;display:block;order:-2;margin:-30px -30px 20px;height:160px;overflow:hidden;border-radius:11px 11px 0 0;background:var(--panel)}
+.post .cover img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:brightness(.58) saturate(.75)}
+.post .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,17,22,.15) 0%,rgba(25,27,36,.35) 45%,var(--panel) 100%);pointer-events:none}
+.post:last-child{grid-column:auto}
+@media(max-width:650px){.post .cover{margin:-24px -24px 16px;height:135px}}
+</style>
 <div class="archive">
 <section id="recent-posts" aria-labelledby="recent-title">
 <h2 id="recent-title">Blog posts</h2>
