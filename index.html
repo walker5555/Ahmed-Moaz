@@ -40,6 +40,13 @@ medium_articles:
 <div class="archive">
 <section id="recent-posts" aria-labelledby="recent-title">
 <h2 id="recent-title">Blog posts</h2>
+<div class="post">
+<a class="cover" href="{{ '/posts/nightspire-threat-intelligence-report/' | relative_url }}" aria-label="NightSpire Threat Intelligence Report"><img src="{{ '/nightspire-cover.png' | relative_url }}" alt="" loading="lazy" decoding="async" width="1000" height="563"></a>
+<h3><a href="{{ '/posts/nightspire-threat-intelligence-report/' | relative_url }}">NightSpire Threat Intelligence Report</a></h3>
+<time datetime="2026-11-18">18 Nov 2026</time>
+<p>Full report with infrastructure analysis, indicators, investigation screenshots, and detection notes.</p>
+</div>
+
 {% for post in site.posts limit: 8 %}
 <div class="post">
 {% if post.image %}<a class="cover" href="{% if post.url contains 'https://' %}{{ post.url | escape }}{% else %}{{ post.url | relative_url }}{% endif %}" aria-label="{{ post.title | escape }}"><img src="{{ post.image | escape }}" alt="" loading="lazy" decoding="async" width="1000" height="563"></a>{% endif %}
