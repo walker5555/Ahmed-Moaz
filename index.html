@@ -40,14 +40,19 @@ medium_articles:
 <div class="archive">
 <section id="recent-posts" aria-labelledby="recent-title">
 <h2 id="recent-title">Blog posts</h2>
-<div class="post">
+<div class="category-filter" role="group" aria-label="Filter articles by category">
+<button type="button" data-filter="all" aria-pressed="true">All</button>
+<button type="button" data-filter="dfir" aria-pressed="false">DFIR</button>
+<button type="button" data-filter="threat-intel" aria-pressed="false">Threat Intelligence</button>
+</div>
+<div class="post" data-category="threat-intel">
 <a class="cover" href="{{ '/posts/apt35-charming-kitten/' | relative_url }}" aria-label="APT35 Charming Kitten Profiling Report"><img src="{{ '/apt35-cover.png' | relative_url }}" alt="" loading="lazy" decoding="async"></a>
 <h3><a href="{{ '/posts/apt35-charming-kitten/' | relative_url }}">APT35 Charming Kitten Profiling Report</a></h3>
 <time datetime="2025-06-25">25 Jun 2025</time>
 <p>A 34-page threat profile covering APT35 campaigns, phishing infrastructure, MITRE ATT&CK techniques, and indicators of compromise.</p>
 </div>
 
-<div class="post">
+<div class="post" data-category="threat-intel">
 <a class="cover" href="{{ '/posts/nightspire-threat-intelligence-report/' | relative_url }}" aria-label="NightSpire Threat Intelligence Report"><img src="{{ '/nightspire-cover.png' | relative_url }}" alt="" loading="lazy" decoding="async" width="1000" height="563"></a>
 <h3><a href="{{ '/posts/nightspire-threat-intelligence-report/' | relative_url }}">NightSpire Threat Intelligence Report</a></h3>
 <time datetime="2026-06-11">11 Jun 2026</time>
@@ -55,7 +60,7 @@ medium_articles:
 </div>
 
 {% for post in site.posts limit: 8 %}
-<div class="post">
+<div class="post" data-category="dfir">
 {% if post.image %}<a class="cover" href="{% if post.url contains 'https://' %}{{ post.url | escape }}{% else %}{{ post.url | relative_url }}{% endif %}" aria-label="{{ post.title | escape }}"><img src="{{ post.image | escape }}" alt="" loading="lazy" decoding="async" width="1000" height="563"></a>{% endif %}
 <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
 <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d %b %Y" }}</time>
@@ -63,7 +68,7 @@ medium_articles:
 </div>
 {% endfor %}
 {% for post in page.medium_articles %}
-<div class="post">
+<div class="post" data-category="dfir">
 {% if post.image %}<a class="cover" href="{% if post.url contains 'https://' %}{{ post.url | escape }}{% else %}{{ post.url | relative_url }}{% endif %}" aria-label="{{ post.title | escape }}"><img src="{{ post.image | escape }}" alt="" loading="lazy" decoding="async" width="1000" height="563"></a>{% endif %}
 <h3><a href="{{ post.url | escape }}">{{ post.title | escape }}</a></h3>
 <time datetime="{{ post.date }}">{{ post.date | date: "%d %b %Y" }}</time>
@@ -72,3 +77,5 @@ medium_articles:
 {% endfor %}
 </section>
 </div>
+<style>.category-filter{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;margin:0 0 8px}.category-filter button{font:500 14px "Geist",sans-serif;padding:10px 18px;color:#bec8dc;border:1px solid #3a4356;background:#151c2b;border-radius:6px;cursor:pointer}.category-filter button[aria-pressed="true"]{background:#acb8ff;color:#101522;border-color:#acb8ff}.category-filter button:focus-visible{outline:2px solid white;outline-offset:3px}.archive .post[hidden]{display:none}</style>
+<script>document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));document.querySelectorAll('.post[data-category]').forEach(post=>post.hidden=button.dataset.filter!=='all'&&post.dataset.category!==button.dataset.filter)}));</script>
